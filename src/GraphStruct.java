@@ -342,11 +342,16 @@ public class GraphStruct {
 			double total_Weights_Selected) {
 		double[] dist = new double[ap.NUMBER_OF_PARTITIONS];
 		double each = total_Weights_Selected / ap.NUMBER_OF_PARTITIONS;
+		calcMaxMin();
+		System.out.println(maxWeight);
+		System.out.println(total_Weights_Selected/maxWeight);
+		double totalConsumed = 0.0;
 		double consumed = 0.0;
 		int color = 0;
 		Edge prev = null;
 		for (String edgeId : costumOrderedIds) {
 			if (consumed > each && color < ap.NUMBER_OF_PARTITIONS) {
+				totalConsumed += consumed;
 				consumed = 0;
 				color++;
 			}
@@ -369,8 +374,20 @@ public class GraphStruct {
 			e.src.localBucket[color] += e.weight;
 			e.dst.localBucket[color] += e.weight;
 		}
+		
+		double delta = total_Weights_Selected - totalConsumed;
 		tails[prev.color] = prev;
 
+		int newNumParts = 0;
+		for(int i = 0; i< ap.NUMBER_OF_PARTITIONS; i++){
+			if(heads[i] != null)
+				newNumParts = i+1;
+			else
+				break;
+		}
+		System.out.println("New Numer of Partitions:\t" + newNumParts);
+		ap.NUMBER_OF_PARTITIONS = newNumParts;
+		
 		// Just for test the correctness of Heads and Tails
 		int coutFirst = 0;
 		for (int i = 0; i < ap.NUMBER_OF_PARTITIONS; i++) {
