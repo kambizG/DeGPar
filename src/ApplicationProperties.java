@@ -7,7 +7,7 @@ public class ApplicationProperties {
 	// Constants
 	public String DIRECTORY;
 	public String SECTION_MARKER;
-	public String SUB_FOLDER;
+	public String SUB_DIRECTORY;
 
 	// Files
 	public File GRAPH;
@@ -56,8 +56,8 @@ public class ApplicationProperties {
 		}
 	}
 
-	public void initiateSubFolder(int number) {
-		SUB_FOLDER = DIRECTORY + "trial_" + number + "/";
+	public void initiateSubDirectory(int number) {
+		SUB_DIRECTORY = DIRECTORY + "trial_" + number + "/";
 		//System.currentTimeMillis() + "_"
 		//		+ MINIMUM_WEIGHT_THRESHOLD + "_" + NUMBER_OF_PARTITIONS + "_"
 		//		+ EXCHANGE_LIMIT + "_" + EXPANSION_LIMIT + "_"

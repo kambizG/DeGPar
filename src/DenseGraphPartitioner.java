@@ -18,18 +18,18 @@ public class DenseGraphPartitioner {
 			ApplicationProperties ap = new ApplicationProperties("appProperties.properties", directory);
 			// Partitioning-----------------------------------------------------------------
 			for (int i = 0; i < ap.NUM_REPETITION; i++) {
-				ap.initiateSubFolder(i);
-				File f = new File(ap.SUB_FOLDER);
+				ap.initiateSubDirectory(i);
+				File f = new File(ap.SUB_DIRECTORY);
 				if (!f.exists())
 					if (f.mkdir());
-				logger = new Logger(ap.SUB_FOLDER + "report");
+				logger = new Logger(ap.SUB_DIRECTORY + "report");
 				GraphStruct g = new GraphStruct(ap, logger);
 				long start = System.currentTimeMillis();
 				g.start();
 				logger.logEntry("################");
 				logger.logEntry("#LOG: Execution terminated in: "
 						+ (System.currentTimeMillis() - start) / 1000.0 + "s");
-				g.writeEdgeList(ap.SUB_FOLDER + "edgeList.csv", 0.0);
+				g.writeEdgeList(ap.SUB_DIRECTORY + "edgeList.csv", 0.0);
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();

@@ -32,7 +32,6 @@ public class Node {
 		numTry = 0;
 		int numSuc = 0;
 		for (int i = 0; i < 1; i++) {
-
 			if (!this.isInternal()) {
 				try {
 					int dominantColor = getDominantColor();
@@ -205,7 +204,6 @@ public class Node {
 				}
 			}
 		}
-
 		return dominantColor;
 	}
 

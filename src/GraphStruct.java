@@ -95,6 +95,7 @@ public class GraphStruct {
 				+ " # dur: " + dur + " #NumSuc: " + countSuc + "/" + countTry
 				+ " #CUT: " + currentCUTSize;// +
 		logger.logEntry(report);
+		System.out.println(report);
 	}
 
 	public String standardDeviation() {
