@@ -213,7 +213,7 @@ public class GraphStruct {
 
 				total_Weights += weight;
 				//if (weight > ap.MINIMUM_WEIGHT_THRESHOLD) {
-				if (weight > minWT) {
+				if (weight >= minWT) {
 					Node src = null;
 					if (nodeList.containsKey(parts[0])) {
 						src = nodeList.get(parts[0]);
@@ -320,7 +320,7 @@ public class GraphStruct {
 			double sum = 0.0;
 			for(double w : weights){
 				sum+= w;
-				if(sum > totalW * ap.MINIMUM_WEIGHT_THRESHOLD){
+				if(sum >= totalW * ap.MINIMUM_WEIGHT_THRESHOLD){
 					minWT = w;
 					break;
 				}
@@ -333,7 +333,7 @@ public class GraphStruct {
 	}
 
 	/**
-	 * Given A costume sorted set of edgeIds this method colors the edges
+	 * Given A custom sorted set of edgeIds this method colors the edges
 	 * accordingly.
 	 * 
 	 * @param costumOrderedIds
@@ -351,7 +351,7 @@ public class GraphStruct {
 		int color = 0;
 		Edge prev = null;
 		for (String edgeId : costumOrderedIds) {
-			if (consumed > each && color < ap.NUMBER_OF_PARTITIONS) {
+			if (consumed >= each && color < ap.NUMBER_OF_PARTITIONS) {
 				totalConsumed += consumed;
 				consumed = 0;
 				color++;
